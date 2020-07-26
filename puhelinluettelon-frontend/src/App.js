@@ -48,6 +48,9 @@ const App = () => {
           setNewNumber('')
           notification('green', `Addded ${newName}`)
         })
+        .catch(error => {
+          notification('red',error.response.data.error)
+        })
 
     } else if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
       const id = persons[arrayid].id
@@ -58,6 +61,9 @@ const App = () => {
           setNewName('')
           setNewNumber('')
           notification('green', `The phonenumber of ${newName} has been changed`)
+        })
+        .catch(error => {
+          notification('red',error.response.data.error)
         })
     }
 
